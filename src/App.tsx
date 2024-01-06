@@ -1,10 +1,10 @@
 import "./App.css";
 import { useState } from "react";
-import Table from "./components/Table";
+import Table from "./components/table/Table";
 import mockData from "./dev/mockData";
 import { VisibleColumns } from "./types";
-import Filter from "./components/Filter";
-import Pagination from "./components/Pagination";
+import Filter from "./components/utils/Filter";
+import Pagination from "./components/utils/Pagination";
 import config from "./config";
 
 export default function App() {

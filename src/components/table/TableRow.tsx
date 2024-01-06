@@ -1,5 +1,5 @@
 import TableCell from "./TableCell";
-import { TableRowProps } from "../types";
+import { TableRowProps } from "../../types";
 
 export default function TableRow({
   rowData,

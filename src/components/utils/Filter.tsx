@@ -1,4 +1,4 @@
-import { FilterProps } from "../types";
+import { FilterProps } from "../../types";
 
 export default function Filter({
   columns,

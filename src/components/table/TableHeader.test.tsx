@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import TableHeader from "./TableHeader";
-import { TableColumn } from "../types";
+import { TableColumn } from "../../types";
 
 describe("TableHeader component", () => {
   it("renders all columns", () => {

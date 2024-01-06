@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { TableCellProps } from "../types";
+import { TableCellProps } from "../../types";
 
 export default function TableCell({ value, onUpdate }: TableCellProps) {
   const [isEditing, setIsEditing] = useState(false);

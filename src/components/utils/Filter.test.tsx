@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import Filter from "./Filter";
-import { TableColumn } from "../types";
+import { TableColumn } from "../../types";
 
 describe("Filter component", () => {
   it("renders checkboxes for each column", () => {

@@ -1,9 +1,9 @@
 import { FixedSizeList as List } from "react-window";
-import { TableProps } from "../types";
+import { TableProps } from "../../types";
 import TableRow from "./TableRow";
 import TableHeader from "./TableHeader";
 import React from "react";
-import config from "../config";
+import config from "../../config";
 
 export default function Table({
   columns,

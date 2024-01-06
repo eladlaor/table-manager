@@ -1,7 +1,7 @@
 import { render } from "@testing-library/react";
 import Table from "./Table";
-import mockData from "../dev/mockData";
-import { VisibleColumns } from "../types";
+import mockData from "../../dev/mockData";
+import { VisibleColumns } from "../../types";
 
 describe("Table component", () => {
   it("renders without crashing", () => {
