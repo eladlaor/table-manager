@@ -34,7 +34,10 @@ export default function Table({
 
   return (
     <div className="virtualized-table-container">
-      <TableHeader columns={columns} />
+      <TableHeader
+        columns={columns}
+        visibleColumns={visibleColumns}
+      />
       <List
         height={listHeight}
         itemCount={data.length}

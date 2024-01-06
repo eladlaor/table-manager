@@ -8,6 +8,7 @@ export interface TableColumn {
 
 export interface TableHeaderProps {
   columns: TableColumn[];
+  visibleColumns: VisibleColumns;
 }
 
 export interface TableRowData {
@@ -32,19 +33,23 @@ export interface TableRowProps {
 export interface TableCellProps {
   columnId: string;
   value: string | number | boolean;
+  type: string;
   onUpdate: (newValue: any) => void;
 }
 
 export interface FilterProps {
   columns: TableColumn[];
-  visibleColumns: {
-    [key: string]: boolean;
-  };
-  setVisibleColumns: (visibleColumns: { [key: string]: boolean }) => void;
+  visibleColumns: VisibleColumns;
+  setVisibleColumns: React.Dispatch<React.SetStateAction<VisibleColumns>>;
+}
+
+export interface ColumnInfo {
+  visible: boolean;
+  type: string;
 }
 
 export interface VisibleColumns {
-  [columnName: string]: boolean;
+  [columnName: string]: ColumnInfo;
 }
 
 export interface PaginationProps {
@@ -52,3 +57,9 @@ export interface PaginationProps {
   totalItems: number;
   paginate: (pageNumber: number) => void;
 }
+
+export const Types = {
+  Boolean: "boolean",
+  String: "string",
+  Number: "number",
+};

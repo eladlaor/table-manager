@@ -6,10 +6,13 @@ export default function Filter({
   setVisibleColumns,
 }: FilterProps) {
   function handleChange(id: string) {
-    setVisibleColumns({
-      ...visibleColumns,
-      [id]: !visibleColumns[id],
-    });
+    setVisibleColumns((prev) => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        visible: !prev[id].visible,
+      },
+    }));
   }
 
   return (
@@ -20,7 +23,7 @@ export default function Filter({
             id={`checkbox-${column.id}`}
             className="filter-checkbox"
             type="checkbox"
-            checked={visibleColumns[column.id]}
+            checked={visibleColumns[column.id].visible}
             onChange={() => handleChange(column.id)}
           />
           <label

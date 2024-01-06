@@ -16,7 +16,10 @@ export default function App() {
   const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const visibleColumnsInitialState: VisibleColumns = Object.fromEntries(
-    mockData.columns.map((column) => [column.id, true])
+    mockData.columns.map((column) => [
+      column.id,
+      { visible: true, type: column.type },
+    ])
   );
 
   const [visibleColumns, setVisibleColumns] = useState<VisibleColumns>(
@@ -40,7 +43,7 @@ export default function App() {
     <div className="App">
       <header className="app-header">
         <h1>a Cemento task</h1>
-        <h2>double click on a cell to edit it</h2>
+        <h2>double click on a cell to edit it 🥁</h2>
       </header>
       <Filter
         columns={mockData.columns}

@@ -1,11 +1,13 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import TableCell from "./TableCell";
+import { Types } from "../../types";
 
 describe("TableCell component", () => {
   it("renders value as text", () => {
     render(
       <TableCell
         value="Test Value"
+        type={Types.String}
         onUpdate={jest.fn()}
         columnId={""}
       />
@@ -18,6 +20,7 @@ describe("TableCell component", () => {
     render(
       <TableCell
         value="Test Value"
+        type={Types.String}
         onUpdate={mockOnUpdate}
         columnId={""}
       />
@@ -31,6 +34,7 @@ describe("TableCell component", () => {
     render(
       <TableCell
         value="Test Value"
+        type={Types.String}
         onUpdate={mockOnUpdate}
         columnId={""}
       />

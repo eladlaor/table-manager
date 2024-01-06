@@ -1,13 +1,15 @@
 import { render } from "@testing-library/react";
 import Table from "./Table";
 import mockData from "../../dev/mockData";
-import { VisibleColumns } from "../../types";
+import { ColumnInfo, VisibleColumns } from "../../types";
 
 describe("Table component", () => {
   it("renders without crashing", () => {
     const visibleColumns: VisibleColumns = mockData.columns.reduce(
       (acc, column) => {
-        acc[column.id] = true;
+        const columnInfo = acc[column.id] || ({} as ColumnInfo);
+        columnInfo.visible = true;
+        acc[column.id] = columnInfo;
         return acc;
       },
       {} as VisibleColumns
