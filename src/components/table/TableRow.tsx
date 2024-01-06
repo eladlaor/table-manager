@@ -16,7 +16,7 @@ export default function TableRow({
         .filter(([columnId]) => visibleColumns[columnId])
         .map(([columnId, cellValue]) => (
           <TableCell
-            key={columnId}
+            key={`${rowData.id}-${columnId}`}
             columnId={columnId}
             value={cellValue}
             onUpdate={(newValue) =>

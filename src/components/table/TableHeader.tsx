@@ -8,7 +8,7 @@ export default function TableHeader({ columns }: TableHeaderProps) {
           key={column.id}
           className="virtualized-table-header-cell"
         >
-          {column.title}
+          <div className={`column-header ${column.id}`}>{column.title}</div>
         </div>
       ))}
     </div>

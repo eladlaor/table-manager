@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-
 import { TableCellProps } from "../../types";
 
-export default function TableCell({ value, onUpdate }: TableCellProps) {
+export default function TableCell({
+  value,
+  onUpdate,
+  columnId,
+}: TableCellProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [inputValue, setInputValue] = useState(value.toString());
 
@@ -27,7 +30,7 @@ export default function TableCell({ value, onUpdate }: TableCellProps) {
 
   return (
     <div
-      className="virtualized-table-cell"
+      className={`virtualized-table-cell ${columnId}`}
       onDoubleClick={handleDoubleClick}
     >
       {isEditing ? (
@@ -40,7 +43,7 @@ export default function TableCell({ value, onUpdate }: TableCellProps) {
           autoFocus
         />
       ) : (
-        <span>{value}</span>
+        <div className={`table-cell-content ${columnId}`}>{value}</div>
       )}
     </div>
   );
