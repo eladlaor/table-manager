@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  height: 100vh; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center;
 }
 
 .App-logo {
@@ -14,25 +19,121 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  text-align: center;
+  margin-bottom: 20px; 
+}
+
+.App-header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333; 
+  margin-bottom: 0.5rem; 
+}
+
+.App-header h2 {
+  font-size: 1.5rem; 
+  font-weight: normal;
+  color: #666; 
+}
+
+.filter-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: start;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
 
-.App-link {
-  color: #61dafb;
+.filter-checkbox {
+  margin-right: 5px;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter-label {
+  margin-right: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.filter-label:hover {
+  color: #007bff;
+}
+
+.filter-checkbox:checked + .filter-label {
+  color: #0056b3;
+  font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+.page-item {
+  margin-right: 5px;
+}
+
+.page-link {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-link:hover {
+  background-color: #e9ecef;
+}
+
+.page-link:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+
+.virtualized-table-header {
+  display: flex;
+  background-color: #f2f2f2;
+  border-bottom: 2px solid #e0e0e0; 
+  padding: 5px 0; 
+}
+
+.virtualized-table-header-cell {
+  flex: 1; 
+  text-align: left; 
+  padding: 0 16px; 
+  font-weight: bold; 
+  line-height: 40px; 
+  border-right: 1px solid #e0e0e0; 
+}
+
+
+.virtualized-table-header-cell:last-child {
+  border-right: none;
+}
+
+.virtualized-table-container {
+  display: block;
+  margin-bottom: 0; 
+}
+
+
+.virtualized-table-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.virtualized-table-cell {
+  flex: 1;
+}
+
+.virtualized-table-cell {
+  display: flex; 
+  align-items: center; 
+  justify-content: flex-start; 
+  padding: 8px; 
+  border-bottom: 1px solid #ccc;
 }

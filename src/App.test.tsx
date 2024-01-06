@@ -1,9 +1,10 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("renders with the expected text", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const cemento = screen.getByText(/a Cemento task/);
+  expect(cemento).toBeInTheDocument();
+  const eladLaor = screen.getByText(/double click on a cell to edit it/i);
+  expect(eladLaor).toBeInTheDocument();
 });
