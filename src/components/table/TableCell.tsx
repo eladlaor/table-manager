@@ -14,10 +14,10 @@ export default function TableCell({
   const [inputValue, setInputValue] = useState(value);
 
   const handleDoubleClick = () => {
-    if (type !== Types.Boolean) {
-      setIsEditing(true);
-    } else {
+    if (type === Types.Boolean) {
       onUpdate(!value);
+    } else {
+      setIsEditing(true);
     }
   };
 
