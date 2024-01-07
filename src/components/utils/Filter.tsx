@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FilterProps } from "../../types";
 
 export default function Filter({
@@ -5,6 +6,10 @@ export default function Filter({
   visibleColumns,
   setVisibleColumns,
 }: FilterProps) {
+  useEffect(() => {
+    localStorage.setItem("visibleColumns", JSON.stringify(visibleColumns));
+  }, [visibleColumns]);
+
   function handleChange(id: string) {
     setVisibleColumns((prev) => ({
       ...prev,

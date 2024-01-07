@@ -2,13 +2,16 @@ import "./App.css";
 import { useState } from "react";
 import Table from "./components/table/Table";
 import mockData from "./dev/mockData";
-import { VisibleColumns } from "./types";
+import { TableRowData, VisibleColumns } from "./types";
 import Filter from "./components/utils/Filter";
 import Pagination from "./components/utils/Pagination";
 import config from "./config";
 
 export default function App() {
-  const [data, setData] = useState(mockData.data);
+  const [data, setData] = useState(() => {
+    const savedData = localStorage.getItem("tableData");
+    return savedData ? JSON.parse(savedData) : mockData.data;
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = config.pagination.itemsPerPage;
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -22,12 +25,13 @@ export default function App() {
     ])
   );
 
-  const [visibleColumns, setVisibleColumns] = useState<VisibleColumns>(
-    visibleColumnsInitialState
-  );
+  const [visibleColumns, setVisibleColumns] = useState(() => {
+    const savedColumns = localStorage.getItem("visibleColumns");
+    return savedColumns ? JSON.parse(savedColumns) : visibleColumnsInitialState;
+  });
 
   const updateData = (rowId: string, columnId: any, newValue: any) => {
-    setData((prevData) =>
+    setData((prevData: TableRowData[]) =>
       prevData.map((row) =>
         row.id === rowId
           ? {
@@ -37,6 +41,16 @@ export default function App() {
           : row
       )
     );
+
+    const newData = data.map((row: TableRowData) =>
+      row.id === rowId
+        ? {
+            ...row,
+            [columnId]: newValue,
+          }
+        : row
+    );
+    localStorage.setItem("tableData", JSON.stringify(newData));
   };
 
   return (
