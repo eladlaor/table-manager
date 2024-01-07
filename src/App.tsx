@@ -2,7 +2,7 @@ import "./App.css";
 import { useState } from "react";
 import Table from "./components/table/Table";
 import mockData from "./dev/mockData";
-import { TableRowData, VisibleColumns } from "./types";
+import { VisibleColumns } from "./types";
 import Filter from "./components/utils/Filter";
 import Pagination from "./components/utils/Pagination";
 import config from "./config";
@@ -30,27 +30,20 @@ export default function App() {
     return savedColumns ? JSON.parse(savedColumns) : visibleColumnsInitialState;
   });
 
-  const updateData = (rowId: string, columnId: any, newValue: any) => {
-    setData((prevData: TableRowData[]) =>
-      prevData.map((row) =>
-        row.id === rowId
-          ? {
-              ...row,
-              [columnId]: newValue,
-            }
-          : row
-      )
-    );
+  const updateData = (rowId: string, columnId: string, newValue: any) => {
+    const newData = [...data];
 
-    const newData = data.map((row: TableRowData) =>
-      row.id === rowId
-        ? {
-            ...row,
-            [columnId]: newValue,
-          }
-        : row
-    );
-    localStorage.setItem("tableData", JSON.stringify(newData));
+    const rowIndex = newData.findIndex((row) => row.id === rowId);
+
+    if (rowIndex !== -1) {
+      newData[rowIndex] = {
+        ...newData[rowIndex],
+        [columnId]: newValue,
+      };
+
+      setData(newData);
+      localStorage.setItem("tableData", JSON.stringify(newData));
+    }
   };
 
   return (
