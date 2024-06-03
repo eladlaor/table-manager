@@ -1,4 +1,3 @@
-# Cemento Evaluation Process: Stage 2
 
 ## Overview
 
